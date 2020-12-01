@@ -1,5 +1,8 @@
 import React from "react";
 
+//Import components
+import TodoList from "./components/TodoList";
+
 class TodoApp extends React.Component {
   constructor(props) {
     super(props);
@@ -41,21 +44,8 @@ class TodoApp extends React.Component {
     };
     this.setState((state) => ({
       items: [...state.items, newItem],
-      // items: state.items.concat(newItem),
       text: "",
     }));
-  }
-}
-
-class TodoList extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.items.map((item) => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-    );
   }
 }
 
