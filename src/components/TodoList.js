@@ -4,9 +4,9 @@ import Todo from "./Todo";
 export default function TodoList({ items }) {
   return (
     <div>
-      <ul>
-        <Todo items={items} />
-      </ul>
+      {items.map((item) => (
+        <Todo key={item.id} text={item.text} />
+      ))}
     </div>
   );
 }
