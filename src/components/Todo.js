@@ -1,11 +1,13 @@
 import React from "react";
 
-export default function Todo({ items }) {
+//Import icons from font awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckSquare, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+
+export default function Todo({ text }) {
   return (
     <div>
-      {items.map((item) => (
-        <li key={item.id}>{item.text}</li>
-      ))}
+      <li>{text}</li>
     </div>
   );
 }
