@@ -4,11 +4,16 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-export default function Todo({ text, deleteTodo, item }) {
+export default function Todo({ text, deleteTodo, item, softDeleteTodo }) {
   return (
-    <div>
+    <div className={`todo ${item.completed ? "todo-completed" : ""}`}>
       <li>{text}</li>
-      <FontAwesomeIcon icon={faCheckSquare} />
+      <FontAwesomeIcon
+        icon={faCheckSquare}
+        onClick={() => {
+          softDeleteTodo(item);
+        }}
+      />
       <FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteTodo(item)} />
     </div>
   );

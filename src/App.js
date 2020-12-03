@@ -11,14 +11,19 @@ class TodoApp extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
+    this.softDeleteTodo = this.softDeleteTodo.bind(this);
   }
 
   render() {
-    console.log("items", this.state.items);
+    console.log(this.state.items);
     return (
       <div>
         <h3>TODO</h3>
-        <TodoList items={this.state.items} deleteTodo={this.deleteTodo} />
+        <TodoList
+          items={this.state.items}
+          deleteTodo={this.deleteTodo}
+          softDeleteTodo={this.softDeleteTodo}
+        />
         <TodoForm
           items={this.state.items}
           handleChange={this.handleChange}
@@ -41,6 +46,7 @@ class TodoApp extends React.Component {
     const newItem = {
       text: this.state.text,
       id: Date.now(),
+      completed: false,
     };
     this.setState((state) => ({
       items: [...state.items, newItem],
@@ -56,6 +62,19 @@ class TodoApp extends React.Component {
 
     this.setState(() => ({
       items: updateItems,
+    }));
+  }
+
+  softDeleteTodo(item) {
+    const completedItems = this.state.items.map((element) => {
+      if (element.id === item.id) {
+        return { ...element, completed: !element.completed };
+      }
+      return element;
+    });
+
+    this.setState(() => ({
+      items: completedItems,
     }));
   }
 }
