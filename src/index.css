@@ -23,6 +23,10 @@ li {
   align-items: center;
 }
 
+form label {
+  margin-right: 5px;
+}
+
 form select {
   margin-left: 10px;
 }
