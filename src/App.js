@@ -7,28 +7,29 @@ import TodoList from "./components/TodoList";
 class TodoApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [], text: "" };
+    this.state = { items: [], text: "", option: "all" };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOption = this.handleOption.bind(this);
     this.deleteTodo = this.deleteTodo.bind(this);
     this.softDeleteTodo = this.softDeleteTodo.bind(this);
   }
 
   render() {
-    console.log(this.state.items);
     return (
-      <div>
+      <div className="app-container">
         <h3>TODO</h3>
-        <TodoList
-          items={this.state.items}
-          deleteTodo={this.deleteTodo}
-          softDeleteTodo={this.softDeleteTodo}
-        />
         <TodoForm
           items={this.state.items}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          handleOption={this.handleOption}
           value={this.state.text}
+        />
+        <TodoList
+          items={this.state.items}
+          deleteTodo={this.deleteTodo}
+          softDeleteTodo={this.softDeleteTodo}
         />
       </div>
     );
@@ -65,6 +66,7 @@ class TodoApp extends React.Component {
     }));
   }
 
+  //Function softdeleteTodo
   softDeleteTodo(item) {
     const completedItems = this.state.items.map((element) => {
       if (element.id === item.id) {
@@ -76,6 +78,10 @@ class TodoApp extends React.Component {
     this.setState(() => ({
       items: completedItems,
     }));
+  }
+
+  handleOption(event) {
+    this.setState({ option: event.target.value });
   }
 }
 

@@ -8,13 +8,20 @@ export default function Todo({ text, deleteTodo, item, softDeleteTodo }) {
   return (
     <div className={`todo ${item.completed ? "todo-completed" : ""}`}>
       <li>{text}</li>
-      <FontAwesomeIcon
-        icon={faCheckSquare}
-        onClick={() => {
-          softDeleteTodo(item);
-        }}
-      />
-      <FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteTodo(item)} />
+      <div className="icon-container">
+        <FontAwesomeIcon
+          icon={faCheckSquare}
+          onClick={() => {
+            softDeleteTodo(item);
+          }}
+          className="icon"
+        />
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          onClick={() => deleteTodo(item)}
+          className="icon"
+        />
+      </div>
     </div>
   );
 }
