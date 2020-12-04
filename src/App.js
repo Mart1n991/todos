@@ -8,11 +8,6 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [], text: "", option: "all" };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleOption = this.handleOption.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
-    this.softDeleteTodo = this.softDeleteTodo.bind(this);
   }
 
   render() {
@@ -35,11 +30,11 @@ class TodoApp extends React.Component {
     );
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({ text: e.target.value });
-  }
+  };
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (!this.state.text.length) {
       return;
@@ -53,10 +48,10 @@ class TodoApp extends React.Component {
       items: [...state.items, newItem],
       text: "",
     }));
-  }
+  };
 
   //Function delete todo
-  deleteTodo(item) {
+  deleteTodo = (item) => {
     const updateItems = this.state.items.filter(
       (element) => element.id !== item.id
     );
@@ -64,10 +59,10 @@ class TodoApp extends React.Component {
     this.setState(() => ({
       items: updateItems,
     }));
-  }
+  };
 
   //Function softdeleteTodo
-  softDeleteTodo(item) {
+  softDeleteTodo = (item) => {
     const completedItems = this.state.items.map((element) => {
       if (element.id === item.id) {
         return { ...element, completed: !element.completed };
@@ -78,11 +73,11 @@ class TodoApp extends React.Component {
     this.setState(() => ({
       items: completedItems,
     }));
-  }
+  };
 
-  handleOption(event) {
+  handleOption = (event) => {
     this.setState({ option: event.target.value });
-  }
+  };
 }
 
 export default TodoApp;
