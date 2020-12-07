@@ -4,6 +4,21 @@ import TodoForm from "./components/TodoForm";
 //Import components
 import TodoList from "./components/TodoList";
 
+//Function for filter todos in the array
+const filteredTodos = (option, todos) => {
+  switch (option) {
+    case "completed":
+      console.log("items ", todos);
+      return todos.filter((todo) => todo.completed);
+
+    case "uncompleted":
+      return todos.filter((todo) => todo.completed === false);
+
+    default:
+      return todos;
+  }
+};
+
 class TodoApp extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +37,7 @@ class TodoApp extends React.Component {
           value={this.state.text}
         />
         <TodoList
-          items={this.state.items}
+          items={filteredTodos(this.state.option, this.state.items)}
           deleteTodo={this.deleteTodo}
           softDeleteTodo={this.softDeleteTodo}
         />
@@ -75,6 +90,7 @@ class TodoApp extends React.Component {
     }));
   };
 
+  //Set state according to which option was selected
   handleOption = (event) => {
     this.setState({ option: event.target.value });
   };
