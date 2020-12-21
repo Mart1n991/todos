@@ -6,22 +6,24 @@ import "./TodoForm.css";
 
 export default class TodoForm extends Component {
   render() {
+    const {
+      handleOption,
+      handleChange,
+      handleSubmit,
+      items,
+      value,
+    } = this.props;
+
     return (
       <div className="todo-form-container">
-        <form onSubmit={this.props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="new-todo">What needs to be done?</label>
-          <TodoInput
-            id="new-todo"
-            handleChange={this.props.handleChange}
-            value={this.props.value}
-          />
+          <TodoInput id="new-todo" handleChange={handleChange} value={value} />
 
-          <button>{`Add #${this.props.items.length + 1}`}</button>
-
-          {/* Pridať submit do form */}
+          <button>{`Add #${items.length + 1}`}</button>
         </form>
 
-        <Select handleOption={this.props.handleOption} />
+        <Select handleOption={handleOption} />
       </div>
     );
   }

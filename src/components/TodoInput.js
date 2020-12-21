@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default function TodoInput({ id, handleChange, value }) {
-  return (
-    <>
-      <input autoFocus id={id} onChange={handleChange} value={value} />
-    </>
-  );
+export default class TodoInput extends Component {
+  render() {
+    const { id, handleChange, value } = this.props;
+    return (
+      <>
+        <input autoFocus id={id} onChange={handleChange} value={value} />
+      </>
+    );
+  }
 }
