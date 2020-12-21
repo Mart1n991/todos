@@ -7,7 +7,7 @@ import "./TodoForm.css";
 export default class TodoForm extends Component {
   render() {
     return (
-      <div>
+      <div className="todo-form-container">
         <form onSubmit={this.props.handleSubmit}>
           <label htmlFor="new-todo">What needs to be done?</label>
           <TodoInput
