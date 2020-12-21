@@ -8,7 +8,6 @@ import TodoList from "./components/TodoList";
 const filteredTodos = (option, todos) => {
   switch (option) {
     case "completed":
-      console.log("items ", todos);
       return todos.filter((todo) => todo.completed);
 
     case "uncompleted":
