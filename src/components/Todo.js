@@ -4,6 +4,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckSquare, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
+//import styles
+import "./Todo.css";
+
 export default function Todo({ text, deleteTodo, item, softDeleteTodo }) {
   return (
     <div className={`todo ${item.completed ? "todo-completed" : ""}`}>
