@@ -66,26 +66,20 @@ class TodoApp extends React.Component {
 
   //Function delete todo
   deleteTodo = (item) => {
-    const updateItems = this.state.items.filter(
-      (element) => element.id !== item.id
-    );
-
-    this.setState(() => ({
-      items: updateItems,
+    this.setState((state) => ({
+      items: state.items.filter((element) => element.id !== item.id),
     }));
   };
 
   //Function softdeleteTodo
   softDeleteTodo = (item) => {
-    const completedItems = this.state.items.map((element) => {
-      if (element.id === item.id) {
-        return { ...element, completed: !element.completed };
-      }
-      return element;
-    });
-
-    this.setState(() => ({
-      items: completedItems,
+    this.setState((state) => ({
+      items: state.items.map((element) => {
+        if (element.id === item.id) {
+          return { ...element, completed: !element.completed };
+        }
+        return element;
+      }),
     }));
   };
 
