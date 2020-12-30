@@ -7,7 +7,7 @@ import { faCheckSquare, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 //import styles
 import "./Todo.css";
 
-export default function Todo({ text, deleteTodo, item, softDeleteTodo }) {
+export default function Todo({ text, deleteTodo, item, toggleTodo }) {
   return (
     <div className={`todo ${item.completed ? "todo-completed" : ""}`}>
       <li>{text}</li>
@@ -15,13 +15,13 @@ export default function Todo({ text, deleteTodo, item, softDeleteTodo }) {
         <FontAwesomeIcon
           icon={faCheckSquare}
           onClick={() => {
-            softDeleteTodo(item);
+            toggleTodo(item.id);
           }}
           className="icon"
         />
         <FontAwesomeIcon
           icon={faTrashAlt}
-          onClick={() => deleteTodo(item)}
+          onClick={() => deleteTodo(item.id)}
           className="icon"
         />
       </div>
